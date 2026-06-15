@@ -8,12 +8,13 @@ type PlantData = {
   asset_id: string;
   secure_url: string;
   public_id: string;
-  display_name?: string;
+  display_name: string;
 };
 
 export function Content() {
   const [plantData, setPlantData] = useState<PlantData[]>([]);
 
+  // FETCHING POST FROM API ROUTE
   useEffect(() => {
     async function cloudImageFetch() {
       try {
@@ -24,7 +25,6 @@ export function Content() {
         console.log(err);
       }
     }
-
     cloudImageFetch();
   }, []);
 
@@ -43,16 +43,15 @@ export function Content() {
                 alt="Plant image"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width:768px) 100vw,
-                       (max-width:1200px) 50vw,
-                       25vw"
+                sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
                 priority
               />
             </div>
 
             <div className="p-2">
               <p className="mt-1 text-sm text-neutral-400">
-                {post.display_name || post.public_id}
+                {/* TEXT DISPLAY - PLANT NAMES */}
+                {post.display_name}
               </p>
             </div>
           </div>
